@@ -13,7 +13,7 @@ namespace Application
     public static class ServiceCollectionExtensions
     {
         private const string AzureDevOpsOrganizationUrl = "https://dev.azure.com/diplomarbeitrm/";
-        private const string Pat = "m7hxq7lqz4rdt4jhnehaljqqm4ht7h4s2xmv7fhkba5bxagkpf2a";
+        private const string Pat = "<PERSONALACCESSTOKEN>";
 
         public static IServiceCollection AddApplicationServices(this IServiceCollection serviceCollection)
         {
