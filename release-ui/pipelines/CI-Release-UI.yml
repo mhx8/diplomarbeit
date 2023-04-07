@@ -1,0 +1,28 @@
+name: $(Build.DefinitionName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger: 
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - release-ui/* 
+
+steps:
+- script: |
+   npm install
+  workingDirectory: '$(Build.SourcesDirectory)/release-ui'
+  displayName: 'Install Dependencies'
+
+- script: |
+   npm run build
+  workingDirectory: '$(Build.SourcesDirectory)/release-ui'
+  displayName: 'Build the Project'
+
+- task: AzureStaticWebApp@0
+  inputs:
+    app_location: 'release-ui/dist'
+    api_location: ''
+    output_location: ''
+  env:
+    azure_static_web_apps_api_token: $(StaticWebAppToken)

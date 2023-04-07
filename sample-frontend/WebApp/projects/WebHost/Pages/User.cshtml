@@ -1,0 +1,82 @@
+﻿@page
+
+@using WebHost.Result;
+@model UserModel
+@{
+    ViewData["Title"] = "User";
+}
+
+<div class="text-center">
+
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-dev-tab" data-bs-toggle="pill" data-bs-target="#pills-dev" type="button" role="tab" aria-controls="pills-dev" aria-selected="true">DEV</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-prod-tab" data-bs-toggle="pill" data-bs-target="#pills-prod" type="button" role="tab" aria-controls="pills-prod" aria-selected="false">PROD</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-dev" role="tabpanel" aria-labelledby="pills-dev-tab">
+            <h3>DEV</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">FirstName</th>
+                        <th scope="col">LastName</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">IsAdmin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 0;
+                    }
+                    @foreach (UserResultModel user in Model.DevEntries)
+                    {
+                        i++;
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                            <td>@user.Email</td>
+                            <td>@user.IsAdmin</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="pills-prod" role="tabpanel" aria-labelledby="pills-prod-tab">
+            <h3>PROD</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">FirstName</th>
+                        <th scope="col">LastName</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">IsAdmin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        i = 0;
+                    }
+                    @foreach (UserResultModel user in Model.ProdEntries)
+                    {
+                        i++;
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                            <td>@user.Email</td>
+                            <td>@user.IsAdmin</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
